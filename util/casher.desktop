@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=EjeCasher
+Comment=EjeCasher
+Path=/home/pi/casher
+Exec=/usr/bin/python3 /home/pi/casher/casher.py
+Icon=/home/pi/casher/casher.png
+Terminal=false
+Categories=Office
