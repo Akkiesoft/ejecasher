@@ -1,5 +1,8 @@
 sudo pip3 install escpos guizero
 
+sudo apt update
+sudo apt install -y fonts-vlgothic
+
 mkdir -p ~/.config/lxsession/LXDE-pi
 cp autostart ~/.config/lxsession/LXDE-pi/autostart
 cp casher.desktop ~/.local/share/applications/casher.desktop
