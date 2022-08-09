@@ -28,6 +28,14 @@ def clear_cart():
 def start_without_printer():
     page_reset()
 
+def category_clicked(c):
+    global item_category
+    if item_category == c:
+        return
+    main_itemboxes[item_category].visible = False
+    main_itemboxes[c].visible = True
+    item_category = c
+
 def item_clicked(c):
     global total
     total = 0
@@ -184,6 +192,9 @@ Printer = False
 with open(os.path.join(os.path.dirname(__file__), 'items.json')) as f:
     items = json.loads(f.read())
 
+with open(os.path.join(os.path.dirname(__file__), 'categories.json')) as f:
+    categories = json.loads(f.read())
+
 app = App(title="EjeCasher")
 app.full_screen = True
 
@@ -193,17 +204,32 @@ b = PushButton(screen_check, text="プリンターなしではじめる", comman
 b.text_size = 20
 
 # main screen
+item_category = 0
 screen_main = Box(app, visible=False, width="fill")
-main_itembox = Box(screen_main, layout="grid", width="fill", align="left")
+main_left = Box(screen_main, layout="grid", width="fill", height="fill", align="left")
 main_cartbox = Box(screen_main, width="fill", align="right")
-button = list()
-for c,i in enumerate(items):
-    x = c % 4
-    y = int(c / 4) * 4
-    image = os.path.join(os.path.dirname(__file__), i['image'])
-    button.append(PushButton(main_itembox, grid=[x,y], image=image, command=item_clicked, args=[c]))
-    Text(main_itembox, grid=[x,y+1], text=i['name'])
-    Text(main_itembox, grid=[x,y+2], text="￥"+i['price'])
+
+main_categorybox = Box(main_left, grid=[0,0], layout="grid", width="fill", align="left")
+Text(main_categorybox, grid=[0,0], text="カテゴリー: ")
+category_button = list()
+main_itemboxes = list()
+for cat_c,i in enumerate(categories):
+    category_button.append(PushButton(main_categorybox, grid=[cat_c+1,0], text=i['name'], command=category_clicked, args=[cat_c]))
+    main_itemboxes.append(Box(main_left, grid=[0,1], layout="grid", width="fill", align="left", visible=False))
+    button = list()
+    coordinate_count = 0
+    for c,i in enumerate(items):
+        if i['category'] != cat_c:
+            continue
+        x = coordinate_count % 4
+        y = int(coordinate_count / 4) * 4
+        coordinate_count += 1
+        image = os.path.join(os.path.dirname(__file__), i['image'])
+        button.append(PushButton(main_itemboxes[cat_c], grid=[x,y], image=image, command=item_clicked, args=[c]))
+        Text(main_itemboxes[cat_c], grid=[x,y+1], text=i['name'])
+        Text(main_itemboxes[cat_c], grid=[x,y+2], text="￥"+i['price'])
+main_itemboxes[item_category].visible = True
+
 Text(main_cartbox, text="選択した商品:")
 main_listbox = ListBox(main_cartbox, items=[])
 b = PushButton(main_cartbox, width="fill", text="キャンセル", command=clear_cart)
