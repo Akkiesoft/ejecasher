@@ -12,7 +12,10 @@ guizeroで作った簡易レジシステムです。実際にコミケで使う�
 
 ## セットアップ
 
-* このリポジトリを/home/pi上にcloneします
+* このリポジトリを/home/pi(あるいは別のユーザー名)上にcloneします
+  ```
+  akkie@casher:~ $ git clone https://github.com/Akkiesoft/ejecasher casher
+  ```
 * util/setup.shを実行します
     * 必要なpythonライブラリをインストール
     * VLゴシックをインストール
@@ -30,7 +33,21 @@ items.jsonに販売するアイテムを記述します
     "short": "商品名（右のリストに表示する用・短めに）",
     "receipt": "商品名（レシート用・短めに）",
     "price": "価格",
-    "image": "商品画像" }
+    "image": "商品画像",
+    "category": <カテゴリー番号> }
+]
+```
+
+## カテゴリーの設定
+
+categories.jsonに販売するアイテムを記述します。最低一つ記述しておいてください。
+
+```
+[
+    {
+        "id": 0,
+        "name": "本・グッズ"
+    }
 ]
 ```
 
