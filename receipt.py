@@ -21,11 +21,11 @@ def receipt_print(Printer, items, cart, total, m, receive):
     Printer._raw(jptext("こくだランド\n"))
     Printer.set(align="center",width=1,height=1)
     Printer._raw(jptext("https://l.kokuda.org/\n"))
-    Printer._raw(jptext("コミックマーケット99 東5-テ23a\n\n"))
+    Printer._raw(jptext("コミックマーケット100 西す22b\n\n"))
     Printer.set(align="left",width=1,height=1)
     Printer._raw(jptext("ミ★こくだランドでお買い上げ\n"))
     Printer._raw(jptext("　　ありがとうございます。\n"))
-    Printer._raw(jptext("　　良いお年をお過ごしください！\n\n"))
+    Printer._raw(jptext("暑さに負けずコミケを楽しもう！\n\n"))
 
     now = time.strftime("%Y年%m月%d日 %H:%M\n\n")
     Printer._raw(jptext(now))
