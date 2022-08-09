@@ -205,7 +205,7 @@ b.text_size = 20
 
 # main screen
 item_category = 0
-screen_main = Box(app, visible=False, width="fill")
+screen_main = Box(app, visible=False, width="fill", height="fill")
 main_left = Box(screen_main, layout="grid", width="fill", height="fill", align="left")
 main_cartbox = Box(screen_main, width="fill", align="right")
 
@@ -215,6 +215,7 @@ category_button = list()
 main_itemboxes = list()
 for cat_c,i in enumerate(categories):
     category_button.append(PushButton(main_categorybox, grid=[cat_c+1,0], text=i['name'], command=category_clicked, args=[cat_c]))
+    category_button[cat_c].text_size = 14
     main_itemboxes.append(Box(main_left, grid=[0,1], layout="grid", width="fill", align="left", visible=False))
     button = list()
     coordinate_count = 0
@@ -231,7 +232,7 @@ for cat_c,i in enumerate(categories):
 main_itemboxes[item_category].visible = True
 
 Text(main_cartbox, text="選択した商品:")
-main_listbox = ListBox(main_cartbox, items=[])
+main_listbox = ListBox(main_cartbox, items=[], width="fill")
 b = PushButton(main_cartbox, width="fill", text="キャンセル", command=clear_cart)
 b.text_size = 20
 main_total = Text(main_cartbox, text="")
