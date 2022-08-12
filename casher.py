@@ -161,6 +161,62 @@ def page_4(m, received):
     if Printer:
         receipt_print(Printer, items, cart, total, m, received)
 
+def genarate_list(csvfile):
+    with open(csvfile) as f:
+        csv = f.readlines()
+    result = {}
+    for i,l in enumerate(csv):
+        if i == 0:
+            continue
+        ll = l.split(',')
+        if not ll[2] in result:
+            result[ll[2]] = {"count":0,"total":0}
+        c = len(ll)
+        if 4 < c:
+            result[ll[2]]["count"] += int(ll[3])
+            result[ll[2]]["total"] += int(ll[4])
+        else:
+            result[ll[2]]["total"] += int(ll[3])
+    return result
+def page_5():
+    transactions = genarate_list(os.path.join(os.path.dirname(__file__), "uriage-transaction.csv"))
+    items = genarate_list(os.path.join(os.path.dirname(__file__), "uriage-items.csv"))
+    uriage_grid = Box(uriage_grid_outer, layout="grid", width="fill")
+    c = 0
+    Text(uriage_grid, grid=[0,c], align="left",  text="出力時刻: %s" % time.strftime("%Y/%m/%d %H:%M:%S"))
+    c += 1
+    Text(uriage_grid, grid=[0,c], align="left",  text=" ")
+    c += 1
+    Text(uriage_grid, grid=[0,c], align="left",  text="商品名")
+    Text(uriage_grid, grid=[1,c], align="right", text="個数")
+    Text(uriage_grid, grid=[2,c], align="right", text="売上金額")
+    for k,v in items.items():
+        c += 1
+        Text(uriage_grid, grid=[0,c], align="left",  text=k)
+        Text(uriage_grid, grid=[1,c], align="right", text=v["count"])
+        Text(uriage_grid, grid=[2,c], align="right", text=v["total"])
+    c += 1
+    Text(uriage_grid, grid=[0,c], align="left",  text=" ")
+    c += 1
+    Text(uriage_grid, grid=[0,c], align="left",  text="支払い種類ごとの売上")
+    Text(uriage_grid, grid=[2,c], align="right", text="売上金額")
+    total = 0
+    for k,v in transactions.items():
+        c += 1
+        Text(uriage_grid, grid=[0,c], align="left",  text=k)
+        Text(uriage_grid, grid=[2,c], align="right", text=v["total"])
+        total +=v["total"]
+    c += 1
+    Text(uriage_grid, grid=[0,c], align="left",  text="全体の合計")
+    Text(uriage_grid, grid=[2,c], align="right",  text=total)
+
+    screen_main.visible = False
+    screen_uriage.visible = True
+def page_5_exit():
+    uriage_grid_outer.children[0].destroy()
+    screen_main.visible = True
+    screen_uriage.visible = False
+
 def page_reset():
     clear_cart()
     screen_thanks.visible = False
@@ -207,7 +263,7 @@ b.text_size = 20
 item_category = 0
 screen_main = Box(app, visible=False, width="fill", height="fill")
 main_left = Box(screen_main, layout="grid", width="fill", height="fill", align="left")
-main_cartbox = Box(screen_main, width="fill", align="right")
+main_cartbox = Box(screen_main, width="fill", height="fill", align="right")
 
 main_categorybox = Box(main_left, grid=[0,0], layout="grid", width="fill", align="left")
 Text(main_categorybox, grid=[0,0], text="カテゴリー: ")
@@ -231,15 +287,17 @@ for cat_c,i in enumerate(categories):
         Text(main_itemboxes[cat_c], grid=[x,y+2], text="￥"+i['price'])
 main_itemboxes[item_category].visible = True
 
-Text(main_cartbox, text="選択した商品:")
-main_listbox = ListBox(main_cartbox, items=[], width="fill")
+Text(main_cartbox, text="選択した商品:", height=2)
+main_listbox = ListBox(main_cartbox, items=[], width="fill", height="fill")
 b = PushButton(main_cartbox, width="fill", text="キャンセル", command=clear_cart)
 b.text_size = 20
-main_total = Text(main_cartbox, text="")
+main_total = Text(main_cartbox, text="", size=20)
 update_total(main_total)
-main_total.text_size = 20
 main_pay_button = PushButton(main_cartbox, width="fill", text="購入", command=page_2, enabled=False)
 main_pay_button.text_size = 20
+Text(main_cartbox, text=" ", size=20)
+main_check_button = PushButton(main_cartbox, width="fill", text="売上確認", command=page_5)
+main_check_button.text_size = 14
 
 # select pay method screen
 screen_pay_method = Box(app, visible=False)
@@ -301,6 +359,12 @@ b.text_size = 40
 screen_thanks = Box(app, visible=False)
 Text(screen_thanks, text="商品とレシートをお渡しします", size=40, height=2)
 thanks_label = Text(screen_thanks, text="ご購入ありがとうございました", size=40, height=2)
+
+# chack uriage screen
+screen_uriage = Box(app, width="fill", height="fill", visible=False)
+uriage_grid_outer = Box(screen_uriage, width="fill", align="left,top")
+b = PushButton(screen_uriage, text="もどる", align="left", command=page_5_exit)
+b.text_size = 20
 
 screen_check.visible = True
 check_printer_status.after(10, page_0)
