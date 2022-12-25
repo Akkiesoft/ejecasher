@@ -278,6 +278,8 @@ for cat_c,i in enumerate(categories):
     for c,i in enumerate(items):
         if i['category'] != cat_c:
             continue
+        if i['hide'] is True:
+            continue
         x = coordinate_count % 4
         y = int(coordinate_count / 4) * 4
         coordinate_count += 1
