@@ -80,7 +80,7 @@ def page_3_japanpay():
     update_total(pay_japanpay_total)
     screen_pay_japanpay.visible = True
     # JSでいうsetTimeoutみたいなやつ
-    pay_japanpay_total.after(5000, page_3_japanpay_keypad)
+    pay_japanpay_total.after(3000, page_3_japanpay_keypad)
 
 def page_3_japanpay_keypad():
     screen_pay_japanpay.visible = False
@@ -125,7 +125,7 @@ def keypad_input(i):
 def page_3_card():
     update_total(pay_card_total)
     screen_pay_card.visible = True
-    pay_japanpay_total.after(5000, page_3_card_confirm)
+    pay_japanpay_total.after(3000, page_3_card_confirm)
 
 def page_3_card_confirm():
     update_total(pay_card_confirm_total)
