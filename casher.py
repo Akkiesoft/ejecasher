@@ -366,7 +366,7 @@ thanks_label = Text(screen_thanks, text="ご購入ありがとうございまし
 
 # chack uriage screen
 screen_uriage = Box(app, width="fill", height="fill", visible=False)
-uriage_grid_outer = Box(screen_uriage, width="fill", align="left,top")
+uriage_grid_outer = Box(screen_uriage, width="fill", align="top")
 b = PushButton(screen_uriage, text="もどる", align="left", command=page_5_exit)
 b.text_size = 20
 b = PushButton(screen_uriage, text="終了", align="left", command=page_5_end)
