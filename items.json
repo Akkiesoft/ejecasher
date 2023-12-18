@@ -63,10 +63,10 @@
     "category": 1,
     "hide": false
   },
-  { "name": "TinyPicoTrio(LP)",
+  { "name": "組立済TinyPicoTrio(LP)",
     "short": "Trio-LP",
     "receipt": "TinyPicoTrio(LP)",
-    "price": "500",
+    "price": "1500",
     "image": "image/tinypicotrio-lp.png",
     "category": 1,
     "hide": false
