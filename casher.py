@@ -8,8 +8,9 @@ import sys
 import time
 import json
 from guizero import App, Box, PushButton, Text, ListBox
-from escpos import printer
-from receipt import receipt_print
+
+# レシートプリントを使うときはTrueにする
+use_receipt_print = False
 
 # common
 def update_total(label):
@@ -245,7 +246,6 @@ def page_0_noprinter():
 cart = dict()
 total = 0
 keypad_buf = "0"
-Printer = False
 
 with open(os.path.join(os.path.dirname(__file__), 'items.json')) as f:
     items = json.loads(f.read())
@@ -256,10 +256,14 @@ with open(os.path.join(os.path.dirname(__file__), 'categories.json')) as f:
 app = App(title="EjeCasher")
 app.full_screen = True
 
-screen_check = Box(app, visible=False, width="fill", align="left")
-check_printer_status = Text(screen_check, text="レシートプリンターを\n接続してください", size=36, height=2)
-b = PushButton(screen_check, text="プリンターなしではじめる", command=page_0_noprinter)
-b.text_size = 20
+Printer = False
+if use_receipt_print:
+    from escpos import printer
+    from receipt import receipt_print
+    screen_check = Box(app, visible=False, width="fill", align="left")
+    check_printer_status = Text(screen_check, text="レシートプリンターを\n接続してください", size=36, height=2)
+    b = PushButton(screen_check, text="プリンターなしではじめる", command=page_0_noprinter)
+    b.text_size = 20
 
 # main screen
 item_category = 0
@@ -372,6 +376,9 @@ b.text_size = 20
 b = PushButton(screen_uriage, text="終了", align="left", command=page_5_end)
 b.text_size = 20
 
-screen_check.visible = True
-check_printer_status.after(10, page_0)
+if use_receipt_print:
+    screen_check.visible = True
+    check_printer_status.after(10, page_0)
+else:
+    screen_main.visible = True
 app.display()
