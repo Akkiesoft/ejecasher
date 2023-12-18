@@ -1,4 +1,12 @@
 [
+  { "name": "あっきぃの\nラズピッピいじり2023.12",
+    "short": "ラズピ2023.12",
+    "receipt": "ラズピッピいじり2023.12",
+    "price": "400",
+    "image": "image/rpi2023-12.png",
+    "category": 0,
+    "hide": false
+  },
   { "name": "あっきぃの\nラズピッピいじり2023.8",
     "short": "ラズピ2023.8",
     "receipt": "ラズピッピいじり2023.8",
@@ -7,27 +15,11 @@
     "category": 0,
     "hide": false
   },
-  { "name": "uHAT Porter Pico\n(Type-P Rev3)",
+  { "name": "uHAT Porter Pico",
     "short": "uHAT Porter",
-    "receipt": "uHAT Porter Pico P-Rev3",
+    "receipt": "uHAT Porter Pico",
     "price": "400",
     "image": "image/uhatporter.png",
-    "category": 0,
-    "hide": false
-  },
-  { "name": "あっきぃの\nラズピッピいじり4",
-    "short": "ラズピ4",
-    "receipt": "ラズピッピいじり4",
-    "price": "100",
-    "image": "image/rpi4.png",
-    "category": 0,
-    "hide": false
-  },
-  { "name": "あっきぃの\nラズピッピいじり5",
-    "short": "ラズピ5",
-    "receipt": "ラズピッピいじり5",
-    "price": "100",
-    "image": "image/rpi5.png",
     "category": 0,
     "hide": false
   },
@@ -45,30 +37,6 @@
     "price": "500",
     "image": "image/ejecto.png",
     "category": 0,
-    "hide": false
-  },
-  { "name": "Eject2020",
-    "short": "Eject2020",
-    "receipt": "Eject2020",
-    "price": "100",
-    "image": "image/eject2020.png",
-    "category": 0,
-    "hide": false
-  },
-  { "name": "TinyPicoTrio",
-    "short": "Trio",
-    "receipt": "TinyPicoTrio",
-    "price": "500",
-    "image": "image/tinypicotrio.png",
-    "category": 1,
-    "hide": false
-  },
-  { "name": "組立済TinyPicoTrio(LP)",
-    "short": "Trio-LP",
-    "receipt": "TinyPicoTrio(LP)",
-    "price": "1500",
-    "image": "image/tinypicotrio-lp.png",
-    "category": 1,
     "hide": false
   }
 ]
