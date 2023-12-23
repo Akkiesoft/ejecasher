@@ -11,6 +11,8 @@ from guizero import App, Box, PushButton, Text, ListBox
 
 # レシートプリントを使うときはTrueにする
 use_receipt_print = False
+# コインセレクターを使うときはTrueにする
+use_coin = False
 
 # common
 def update_total(label):
@@ -71,6 +73,8 @@ def pay_selected(method):
     if method == 1:
         page_3_japanpay()
     elif method == 2:
+        page_3_coin()
+    elif method == 3:
         page_3_card()
     else:
         # back
@@ -121,6 +125,28 @@ def keypad_input(i):
     elif change < 0:
         keypad_change.append("金額が不足しています")
 
+# screen_pay_coin
+def page_3_coin():
+    update_total(pay_coin_total)
+    screen_pay_coin.visible = True
+    serial.reset_input_buffer()
+    serial.write(str.encode("%s\r\n" % total))
+    screen_pay_coin.repeat(100, page_3_coin_loop)
+
+def page_3_coin_loop():
+    # serialのtimeoutが1秒なのでボタンを推してからは若干ラグがあるのはご愛嬌
+    result = serial.readline().decode(encoding='utf-8').rstrip()
+    if result == "OK":
+        screen_pay_coin.cancel(page_3_coin_loop)
+        screen_pay_coin.visible = False
+        page_4("現金", total)
+
+def page_3_coin_cancel():
+    serial.write(b'\x03')
+    serial.write(b'\x04')
+    screen_pay_coin.cancel(page_3_coin_loop)
+    screen_pay_coin.visible = False
+    screen_pay_method.visible = True
 
 # screen_pay_japanpay
 def page_3_card():
@@ -265,6 +291,12 @@ if use_receipt_print:
     b = PushButton(screen_check, text="プリンターなしではじめる", command=page_0_noprinter)
     b.text_size = 20
 
+if use_coin:
+    import serial
+    serial_port = '/dev/ttyACM0'
+    serial = serial.Serial(serial_port, 115200)
+    serial.timeout= 1
+
 # main screen
 item_category = 0
 screen_main = Box(app, visible=False, width="fill", height="fill")
@@ -312,9 +344,12 @@ screen_pay_method = Box(app, visible=False)
 pay_method_total = Text(screen_pay_method, text="", size=36)
 Text(screen_pay_method, text="支払い方法をえらんでください", size=36, height=2)
 pay_method_labels = ["もどる", "現金トレイ渡し", "クレジットカード/交通IC/iD"]
-for i in range(1, 4):
-    j = i % 3
-    b = PushButton(screen_pay_method, text=pay_method_labels[j], padx=30, pady=30, command=pay_selected, args=[j])
+if use_coin:
+    pay_method_labels.insert(2, "100円玉投入")
+# "もどる"が最後になるようにループしている
+for i in range(1, len(pay_method_labels)+1):
+    j = i % len(pay_method_labels)
+    b = PushButton(screen_pay_method, text=pay_method_labels[j], padx=30, pady=20, command=pay_selected, args=[j])
     b.text_size = 24
 
 # pay japanpay screen
@@ -346,6 +381,14 @@ keypad_result_label = Text(keypad_result, text="¥0", size=40, grid=[0,3], align
 button.append(PushButton(keypad_result, text="決　定", grid=[0,4], padx=120, command=keypad_input, args=[11]))
 for b in button:
     b.text_size = 40
+
+# pay coin screen
+screen_pay_coin = Box(app, visible=False)
+Text(screen_pay_coin, text=" \n100円玉を投入してください", size=40)
+pay_coin_total = Text(screen_pay_coin, text="", size=40)
+Text(screen_pay_coin, text=" ", size=20)
+b = PushButton(screen_pay_coin, text="もどる", command=page_3_coin_cancel)
+b.text_size = 40
 
 # pay card screen
 screen_pay_card = Box(app, visible=False)
