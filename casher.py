@@ -73,7 +73,10 @@ def pay_selected(method):
     if method == 1:
         page_3_japanpay()
     elif method == 2:
-        page_3_coin()
+        if use_coin:
+            page_3_coin()
+        else:
+            page_3_card()
     elif method == 3:
         page_3_card()
     else:
