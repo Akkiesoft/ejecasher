@@ -1,4 +1,20 @@
 [
+  { "name": "いちばんやさしいEject\nコマンド工作の教本",
+    "short": "いちやさEject",
+    "receipt": "いちばんやさしいEject",
+    "price": "400",
+    "image": "image/ichiyasa-eject.png",
+    "category": 0,
+    "hide": false
+  },
+  { "name": "あっきぃの\nラズピッピいじり2024.8",
+    "short": "ラズピ2024.8",
+    "receipt": "ラズピッピいじり2024.8",
+    "price": "400",
+    "image": "image/rpi2024-8.png",
+    "category": 0,
+    "hide": false
+  },
   { "name": "あっきぃの\nラズピッピいじり2023.12",
     "short": "ラズピ2023.12",
     "receipt": "ラズピッピいじり2023.12",
@@ -28,14 +44,6 @@
     "receipt": "麦子アクキー",
     "price": "300",
     "image": "image/mugikokey.png",
-    "category": 0,
-    "hide": false
-  },
-  { "name": "EJECTO 2012-2017",
-    "short": "EJECTO",
-    "receipt": "EJECTO 2012-2017",
-    "price": "500",
-    "image": "image/ejecto.png",
     "category": 0,
     "hide": false
   }
