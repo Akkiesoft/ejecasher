@@ -4,6 +4,7 @@
 import time
 from jptext import jptext
 from unicodedata import east_asian_width
+import config
 
 # https://note.nkmk.me/python-unicodedata-east-asian-width-count/
 def mb_len(text):
@@ -21,15 +22,14 @@ def receipt_print(Printer, items, cart, total, m, receive):
     Printer._raw(jptext("こくだランド\n"))
     Printer.set(align="center",width=1,height=1)
     Printer._raw(jptext("https://l.kokuda.org/\n"))
-    Printer._raw(jptext("コミックマーケット103 東T49a\n\n"))
+    Printer._raw(jptext("%s\n\n" % config.event_name))
     Printer.set(align="left",width=1,height=1)
     Printer._raw(jptext("ミ★こくだランドでお買い上げ\n"))
     Printer._raw(jptext("　　ありがとうございます。\n"))
-    Printer._raw(jptext("今夜の21時からは年末恒例イベント\n"))
-    Printer._raw(jptext("　　除夜のEject2023 を開催！　　\n"))
-    Printer._raw(jptext("　　　ぜひご参加ください♪　　　\n"))
-    Printer._raw(jptext(" https://eject.kokuda.org/joya/ \n"))
-    Printer._raw(jptext("\n\n"))
+    if hasattr(config, 'event_message'):
+        for l in config.event_message:
+            Printer._raw(jptext("%s\n" % l))
+    Printer._raw(jptext("\n"))
 
     now = time.strftime("%Y年%m月%d日 %H:%M\n\n")
     Printer._raw(jptext(now))

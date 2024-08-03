@@ -8,11 +8,17 @@ import sys
 import time
 import json
 from guizero import App, Box, PushButton, Text, ListBox
+import config
 
+# ウィンドウの横幅
+window_width = config.window_width if hasattr(config, 'window_width') else 960
+# ウィンドウの縦幅
+window_height = config.window_height if hasattr(config, 'window_height') else 540
 # レシートプリントを使うときはTrueにする
-use_receipt_print = False
+use_receipt_print = config.use_receipt_print if hasattr(config, 'use_receipt_print') else False
 # コインセレクターを使うときはTrueにする
-use_coin = False
+use_coin = config.use_coin if hasattr(config, 'use_coin') else False
+
 
 # common
 def update_total(label):
@@ -282,8 +288,8 @@ with open(os.path.join(os.path.dirname(__file__), 'items.json')) as f:
 with open(os.path.join(os.path.dirname(__file__), 'categories.json')) as f:
     categories = json.loads(f.read())
 
-app = App(title="EjeCasher")
-app.full_screen = True
+app = App(title="EjeCasher", width = window_width, height = window_height)
+app.full_screen = config.full_screen
 
 Printer = False
 if use_receipt_print:
