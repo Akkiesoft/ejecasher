@@ -1,9 +1,9 @@
 [
-  { "name": "いちばんやさしいEject\nコマンド工作の教本",
-    "short": "いちやさEject",
-    "receipt": "いちばんやさしいEject",
+  { "name": "令和6年最新版\nPCD8544 HATを作って遊ぶ本",
+    "short": "PCD8544の本",
+    "receipt": "PCD8544HATを作って遊ぶ本",
     "price": "400",
-    "image": "image/ichiyasa-eject.png",
+    "image": "image/pcd8544-hat-book.png",
     "category": 0,
     "hide": false
   },
@@ -31,11 +31,11 @@
     "category": 0,
     "hide": false
   },
-  { "name": "uHAT Porter Pico",
-    "short": "uHAT Porter",
-    "receipt": "uHAT Porter Pico",
+  { "name": "いちばんやさしいEject\nコマンド工作の教本",
+    "short": "いちやさEject",
+    "receipt": "いちばんやさしいEject",
     "price": "400",
-    "image": "image/uhatporter.png",
+    "image": "image/ichiyasa-eject.png",
     "category": 0,
     "hide": false
   },
@@ -44,6 +44,22 @@
     "receipt": "麦子アクキー",
     "price": "300",
     "image": "image/mugikokey.png",
+    "category": 0,
+    "hide": false
+  },
+  { "name": "令和6年最新版\nPCD8544 HAT",
+    "short": "PCD8544 HAT",
+    "receipt": "令和6年最新版PCD8544",
+    "price": "800",
+    "image": "image/pcd8544-hat.png",
+    "category": 0,
+    "hide": false
+  },
+  { "name": "uHAT Porter Pico",
+    "short": "uHAT Porter",
+    "receipt": "uHAT Porter Pico",
+    "price": "400",
+    "image": "image/uhatporter.png",
     "category": 0,
     "hide": false
   }
