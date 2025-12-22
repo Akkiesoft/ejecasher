@@ -1,9 +1,14 @@
-sudo pip3 install escpos guizero
-
 sudo apt update
-sudo apt install -y fonts-vlgothic
+sudo apt install -y python3-venv fonts-vlgothic
 
-mkdir -p ~/.config/lxsession/LXDE-pi
-cp autostart ~/.config/lxsession/LXDE-pi/autostart
-sed -e "s/pi/$USER/g" casher.desktop | sudo tee ~/.local/share/applications/casher.desktop > /dev/null
+cd ..
+CURRENT_DIR=`pwd`
+echo $CURRENT_DIR
+python3 -m venv venv
+venv/bin/pip install escpos guizero
+
+cd util
+
+sed -e "s|CURRENT_DIR|$CURRENT_DIR|g" casher.desktop | tee ~/.local/share/applications/casher.desktop > /dev/null
+
 sed -e "s/pi/$USER/g" 99-toshibatec.rules | sudo tee /etc/udev/rules.d/99-toshibatec.rules > /dev/null
