@@ -63,27 +63,11 @@
     "category": 0,
     "hide": false
   },
-  { "name": "あっきぃの\nラズピッピいじり2023.12",
-    "short": "ラズピ2023.12",
-    "receipt": "ラズピッピいじり2023.12",
-    "price": "400",
-    "image": "image/rpi2023-12.png",
-    "category": 1,
-    "hide": false
-  },
   { "name": "あっきぃの\nラズピッピいじり2023.8",
     "short": "ラズピ2023.8",
     "receipt": "ラズピッピいじり2023.8",
     "price": "400",
     "image": "image/rpi2023-8.png",
-    "category": 1,
-    "hide": false
-  },
-  { "name": "令和6年最新版\nPCD8544 HAT",
-    "short": "PCD8544 HAT",
-    "receipt": "令和6年最新版PCD8544",
-    "price": "800",
-    "image": "image/pcd8544-hat.png",
     "category": 1,
     "hide": false
   }
