@@ -1,4 +1,12 @@
 [
+  { "name": "あっきぃの\nラズピッピいじり2026.8",
+    "short": "ラズピ2026.8",
+    "receipt": "ラズピッピいじり2026.8",
+    "price": "400",
+    "image": "image/rpi2026-8.png",
+    "category": 0,
+    "hide": false
+  },
   { "name": "Cockpitで作る\n仮想化&コンテナ基盤入門",
     "short": "Cockpit仮想化入門",
     "receipt": "Cockpitで作る仮想化入門",
@@ -26,9 +34,9 @@
   { "name": "あっきぃの\nラズピッピいじり2025.8",
     "short": "ラズピ2025.8",
     "receipt": "ラズピッピいじり2025.8",
-    "price": "500",
+    "price": "400",
     "image": "image/rpi2025-8.png",
-    "category": 0,
+    "category": 1,
     "hide": false
   },
   { "name": "令和6年最新版\nPCD8544 HATを作って遊ぶ本",
@@ -68,6 +76,14 @@
     "receipt": "ラズピッピいじり2023.8",
     "price": "400",
     "image": "image/rpi2023-8.png",
+    "category": 1,
+    "hide": false
+  },
+  { "name": "毛メダカアクスタ",
+    "short": "毛メダカアクスタ",
+    "receipt": "毛メダカアクスタ",
+    "price": "700",
+    "image": "image/kemedaka-acryl.png",
     "category": 1,
     "hide": false
   }
