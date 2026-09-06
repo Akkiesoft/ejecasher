@@ -77,19 +77,20 @@ def pay_selected(method):
     # 支払い選択画面から各画面への遷移
     screen_pay_method.visible = False
     if method == 1:
-        page_3_japanpay()
+        page_3_japanpay_keypad()
     elif method == 2:
         if use_coin:
             page_3_coin()
         else:
-            page_3_card()
+            page_3_card_confirm()
     elif method == 3:
-        page_3_card()
+        page_3_card_confirm()
     else:
         # back
         screen_main.visible = True
 
 # screen_pay_japanpay
+# お客さんに見せることがないのでこの画面は飛ばすようにした
 def page_3_japanpay():
     update_total(pay_japanpay_total)
     screen_pay_japanpay.visible = True
@@ -158,6 +159,7 @@ def page_3_coin_cancel():
     screen_pay_method.visible = True
 
 # screen_pay_japanpay
+# お客さんに見せることがないのでこの画面は飛ばすようにした
 def page_3_card():
     update_total(pay_card_total)
     screen_pay_card.visible = True
