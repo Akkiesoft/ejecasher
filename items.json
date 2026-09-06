@@ -78,5 +78,21 @@
     "image": "image/uhatporter.png",
     "category": 0,
     "hide": false
+  },
+  { "name": "【技書博14】色紙(毛メダカ)",
+    "short": "色紙(毛メダカ)",
+    "receipt": "色紙(毛メダカ)",
+    "price": "500",
+    "image": "image/gishohaku14-shikishi1.png",
+    "category": 1,
+    "hide": false
+  },
+  { "name": "【技書博14】色紙(ミク)",
+    "short": "色紙(ミク)",
+    "receipt": "色紙(ミク)",
+    "price": "500",
+    "image": "image/gishohaku14-shikishi2.png",
+    "category": 1,
+    "hide": false
   }
 ]
