@@ -1,10 +1,18 @@
 [
+  { "name": "あっきぃの\nラズピッピいじり2026.9",
+    "short": "ラズピ2026.9",
+    "receipt": "ラズピッピいじり2026.9",
+    "price": "400",
+    "image": "image/rpi2026-9.png",
+    "category": 0,
+    "hide": false
+  },
   { "name": "あっきぃの\nラズピッピいじり2026.8",
     "short": "ラズピ2026.8",
     "receipt": "ラズピッピいじり2026.8",
     "price": "400",
     "image": "image/rpi2026-8.png",
-    "category": 0,
+    "category": 1,
     "hide": false
   },
   { "name": "Cockpitで作る\n仮想化&コンテナ基盤入門",
@@ -20,7 +28,7 @@
     "receipt": "制服ミクアクスタ",
     "price": "1500",
     "image": "image/miku-acsta.jpg",
-    "category": 0,
+    "category": 1,
     "hide": false
   },
   { "name": "Cockpit本制服ミク\nステッカー",
@@ -36,7 +44,7 @@
     "receipt": "ラズピッピいじり2025.8",
     "price": "400",
     "image": "image/rpi2025-8.png",
-    "category": 1,
+    "category": 0,
     "hide": false
   },
   { "name": "令和6年最新版\nPCD8544 HATを作って遊ぶ本",
@@ -55,10 +63,10 @@
     "category": 0,
     "hide": false
   },
-  { "name": "あっきぃの\nラズピッピいじり2024.8",
+  { "name": "【特価】あっきぃの\nラズピッピいじり2024.8",
     "short": "ラズピ2024.8",
     "receipt": "ラズピッピいじり2024.8",
-    "price": "400",
+    "price": "100",
     "image": "image/rpi2024-8.png",
     "category": 0,
     "hide": false
@@ -69,22 +77,6 @@
     "price": "400",
     "image": "image/uhatporter.png",
     "category": 0,
-    "hide": false
-  },
-  { "name": "あっきぃの\nラズピッピいじり2023.8",
-    "short": "ラズピ2023.8",
-    "receipt": "ラズピッピいじり2023.8",
-    "price": "400",
-    "image": "image/rpi2023-8.png",
-    "category": 1,
-    "hide": false
-  },
-  { "name": "毛メダカアクスタ",
-    "short": "毛メダカアクスタ",
-    "receipt": "毛メダカアクスタ",
-    "price": "700",
-    "image": "image/kemedaka-acryl.png",
-    "category": 1,
     "hide": false
   }
 ]
